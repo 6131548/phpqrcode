@@ -39,14 +39,16 @@ class Index
                        $logo_qr_height, $logo_width, $logo_height);
           }
           $path  = APP_PATH.'/test/';
-           $png = $path.'2.png';
-
-           if(!is_dir($path)) mkdir($path,0777);
-
-          file_put_contents($png,"", FILE_APPEND);
-
-          imagepng($QR, $png); 
-          echo "<img src=test/2.png />";exit();
+        $name = time().'.png';
+        $png = $path.$name;
+        $img = "test/".$name;
+         if(!is_dir($path)) mkdir($path,0777);
+        imagepng($QR, $png); 
+        echo "<img src=test/$name />";
+        //删除图片
+        // if(file_exists($png)){
+        //     unlink($png);
+        //  }
 
       }
     }
